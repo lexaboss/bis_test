@@ -11,11 +11,14 @@ o   бонусом может считаться реализация в фун�
 git clone git@github.com:lexaboss/bis_test.git .
 
 # Usage 
+```php
+<?php
 $response = $combinator
 	->setString('qwertyuiolk')
 	->setMinChunk(2)
 	->generate();
 $response->getResponse() // <-- result is here
+```
 
 # System requirements
 PHP 7.1

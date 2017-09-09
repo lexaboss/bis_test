@@ -4,10 +4,10 @@
 class arrayCombinationsSimplified { 
 	
 	public static	$stringToParse,
-					$minChunkSize,
-					$combinations = [];
+			$minChunkSize,
+			$combinations = [];
 	
-	public function generate(string $stringToParse, int $minChunkSize)
+	public static function generate(string $stringToParse, int $minChunkSize)
 	{
 		self::$stringToParse = $stringToParse;
 		self::$minChunkSize = 2;
@@ -15,7 +15,7 @@ class arrayCombinationsSimplified {
 		return self::$combinations;
 	}
 	
-	private static function itterate($nextMin, $iterrMax, $callback)
+	private static function itterate(int $nextMin, int $iterrMax, callable $callback)
 	{
 		if($nextMin <= $iterrMax)
 		{
@@ -24,15 +24,13 @@ class arrayCombinationsSimplified {
 		}
 	}
 	
-	public function combinate($nextMin, int $min, int $max, array $prevCombinations = array())
+	public static function combinate(int $nextMin, int $min, int $max, array $prevCombinations = array())
 	{
 		$combinations = [];
 		
 		self::itterate(self::$minChunkSize, $max, function($nextMin) use (
 			$min, 
-			$max,  
-			$nextMax, 
-			$newCombinations, 
+			$max,   
 			$prevCombinations,
 			$combinations
 		) {

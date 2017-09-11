@@ -10,9 +10,8 @@ class arrayCombinationsSimplified {
 	public static function generate(string $stringToParse, int $minChunkSize)
 	{
 		self::$stringToParse = $stringToParse;
-		self::$minChunkSize = 2;
-		self::combinate($minChunkSize, $minChunkSize, strlen($stringToParse) - $minChunkSize);
-		return self::$combinations;
+		self::$minChunkSize = $minChunkSize;
+		return self::combinate($minChunkSize, $minChunkSize, strlen($stringToParse) - $minChunkSize);
 	}
 	
 	private static function itterate(int $nextMin, int $iterrMax, callable $callback)
@@ -57,6 +56,8 @@ class arrayCombinationsSimplified {
 				self::combinate($nextMin, arrayCombinationsSimplified::$minChunkSize, $nextMax - arrayCombinationsSimplified::$minChunkSize, array_slice($newCombinations, 0, -1));
 			}
 		});
+		
+		return self::$combinations;
 	}
 }
 

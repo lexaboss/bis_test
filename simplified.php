@@ -43,7 +43,7 @@ class arrayCombinationsSimplified {
 				$result = [];
 				$from = 0;
 				
-				self::itterate(0, count($combinations) - 1, function() use ($combinations, &$from, &$result) { 
+				self::itterate(0, count($combinations) - 1, function() use (&$combinations, &$from, &$result) { 
 					$to = array_shift($combinations);
 					$result[] = substr(arrayCombinationsSimplified::$stringToParse, $from, $to);
 					$from += $to;
